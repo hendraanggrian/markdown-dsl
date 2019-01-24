@@ -8,10 +8,10 @@ interface HeaderBuilder : BaseMarkdownBuilder {
 
     @Suppress("NOTHING_TO_INLINE")
     private inline fun setHeader(header: String, char: Char) {
-        appendln(header)
+        sb.appendln(header)
         when {
-            isPrettyPrint -> appendln(header.map { char }.joinToString(""))
-            else -> appendln(char)
+            isPrettyPrint -> sb.appendln(header.map { char }.joinToString(""))
+            else -> sb.appendln(char)
         }
     }
 }

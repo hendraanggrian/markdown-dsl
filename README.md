@@ -1,3 +1,3 @@
 Markdown DSL
 ============
-Kotlin DSL to write markdown files
+Kotlin is fun, why not write markdown files with it.

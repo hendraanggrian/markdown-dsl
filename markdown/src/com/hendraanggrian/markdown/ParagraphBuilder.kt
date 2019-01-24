@@ -3,7 +3,7 @@ package com.hendraanggrian.markdown
 interface ParagraphBuilder : BaseMarkdownBuilder {
 
     fun paragraph(paragraph: String) {
-        appendln(paragraph)
-        appendln()
+        sb.appendln(paragraph)
+        sb.appendln()
     }
 }
