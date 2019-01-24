@@ -8,39 +8,45 @@ class ListTest {
     @Test
     fun list() {
         assertEquals(
-            "* Hello\n" +
-                "* world",
+            """
+                * Hello
+                * world
+            """.trimIndent(),
             buildMarkdown {
                 list {
                     item("Hello")
                     item("world")
                 }
-            }.content.trim()
+            }.trim()
         )
     }
 
     @Test
     fun orderedList() {
         assertEquals(
-            "1. Hello\n" +
-                "2. world",
+            """
+                1. Hello
+                2. world
+            """.trimIndent(),
             buildMarkdown {
                 orderedList {
                     item("Hello")
                     item("world")
                 }
-            }.content.trim()
+            }.trim()
         )
     }
 
     @Test
     fun multiParagraphList() {
         assertEquals(
-            "* Hello\n" +
-                "  \n" +
-                "  Hello\n" +
-                "  \n" +
-                "* world",
+            """
+                * Hello
+
+                  Hello
+
+                * world
+            """.trimIndent(),
             buildMarkdown {
                 list {
                     item("Hello") {
@@ -48,14 +54,16 @@ class ListTest {
                     }
                     item("world")
                 }
-            }.content.trim()
+            }.trim()
         )
         assertEquals(
-            "1. Hello\n" +
-                "   \n" +
-                "   Hello\n" +
-                "   \n" +
-                "2. world",
+            """
+                1. Hello
+
+                   Hello
+
+                2. world
+            """.trimIndent(),
             buildMarkdown {
                 orderedList {
                     item("Hello") {
@@ -63,7 +71,7 @@ class ListTest {
                     }
                     item("world")
                 }
-            }.content.trim()
+            }.trim()
         )
     }
 }

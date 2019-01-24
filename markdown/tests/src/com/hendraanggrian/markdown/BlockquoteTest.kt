@@ -8,51 +8,61 @@ class BlockquoteTest {
     @Test
     fun blockquoteLine() {
         assertEquals(
-            ">Hello world",
+            """
+                >Hello world
+            """.trimIndent(),
             buildMarkdown {
                 blockquote("Hello world")
-            }.content.trim()
+            }.trim()
         )
         assertEquals(
-            "> Hello world",
+            """
+                > Hello world
+            """.trimIndent(),
             buildMarkdown(true) {
                 blockquote("Hello world")
-            }.content.trim()
+            }.trim()
         )
     }
 
     @Test
     fun blockquote() {
         assertEquals(
-            ">Hello\n" +
-                ">=\n" +
-                ">world",
+            """
+                >Hello
+                >=
+                >world
+            """.trimIndent(),
             buildMarkdown {
                 blockquote {
-                    firstHeader("Hello")
+                    header("Hello")
                     paragraph("world")
                 }
-            }.content.trim()
+            }.trim()
         )
         assertEquals(
-            "> Hello\n" +
-                "> =====\n" +
-                "> world",
+            """
+                > Hello
+                > =====
+                > world
+            """.trimIndent(),
             buildMarkdown(true) {
                 blockquote {
-                    firstHeader("Hello")
+                    header("Hello")
                     paragraph("world")
                 }
-            }.content.trim()
+            }.trim()
         )
     }
 
     @Test
     fun nestedBlockquote() {
         assertEquals(
-            ">Hello\n" +
-                ">>world\n" +
-                ">I'm fine",
+            """
+                >Hello
+                >>world
+                >I'm fine
+            """.trimIndent(),
             buildMarkdown {
                 blockquote {
                     paragraph("Hello")
@@ -61,12 +71,14 @@ class BlockquoteTest {
                     }
                     paragraph("I'm fine")
                 }
-            }.content.trim()
+            }.trim()
         )
         assertEquals(
-            "> Hello\n" +
-                "> > world\n" +
-                "> I'm fine",
+            """
+                > Hello
+                > > world
+                > I'm fine
+            """.trimIndent(),
             buildMarkdown(true) {
                 blockquote {
                     paragraph("Hello")
@@ -75,7 +87,7 @@ class BlockquoteTest {
                     }
                     paragraph("I'm fine")
                 }
-            }.content.trim()
+            }.trim()
         )
     }
 }

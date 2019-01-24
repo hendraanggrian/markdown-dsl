@@ -8,10 +8,12 @@ class ParagraphTest {
     @Test
     fun paragraph() {
         assertEquals(
-            "Hello world",
+            """
+                Hello world
+            """.trimIndent(),
             buildMarkdown {
                 paragraph("Hello world")
-            }.content.trim()
+            }.trim()
         )
     }
 }

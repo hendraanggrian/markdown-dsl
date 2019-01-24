@@ -3,6 +3,9 @@ buildscript {
         jcenter()
     }
     dependencies {
+        classpath(files("markdown-0.1.jar"))
+        classpath(files("markdown-github-0.1.jar"))
+        classpath(files("markdown-gradle-plugin-0.1.jar"))
         classpath(kotlin("gradle-plugin", VERSION_KOTLIN))
         classpath(dokka())
         classpath(gitPublish())

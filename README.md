@@ -1,3 +1,4 @@
-Markdown DSL
-============
-Kotlin is fun, why not write markdown files with it.
+Fuck Me
+=======
+Kotlin DSL to write markdown files
+

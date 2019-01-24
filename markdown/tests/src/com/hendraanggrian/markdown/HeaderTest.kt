@@ -8,36 +8,44 @@ class HeaderTest {
     @Test
     fun firstHeader() {
         assertEquals(
-            "Hello world\n" +
-                "=",
+            """
+                Hello world
+                =
+            """.trimIndent(),
             buildMarkdown {
-                firstHeader("Hello world")
-            }.content.trim()
+                header("Hello world")
+            }.trim()
         )
         assertEquals(
-            "Hello world\n" +
-                "===========",
+            """
+                Hello world
+                ===========
+            """.trimIndent(),
             buildMarkdown(true) {
-                firstHeader("Hello world")
-            }.content.trim()
+                header("Hello world")
+            }.trim()
         )
     }
 
     @Test
     fun secondHeader() {
         assertEquals(
-            "Hello world\n" +
-                "-",
+            """
+                Hello world
+                -
+            """.trimIndent(),
             buildMarkdown {
-                secondHeader("Hello world")
-            }.content.trim()
+                subheader("Hello world")
+            }.trim()
         )
         assertEquals(
-            "Hello world\n" +
-                "-----------",
+            """
+                Hello world
+                -----------
+            """.trimIndent(),
             buildMarkdown(true) {
-                secondHeader("Hello world")
-            }.content.trim()
+                subheader("Hello world")
+            }.trim()
         )
     }
 }

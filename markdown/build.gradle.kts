@@ -7,6 +7,7 @@ plugins {
     id("com.jfrog.bintray")
     id("com.novoda.bintray-release")
     id("org.ajoberstar.git-publish")
+    id("com.hendraanggrian.markdown")
 }
 
 sourceSets {
@@ -32,6 +33,13 @@ dependencies {
 }
 
 tasks {
+    register("deploy") {
+        dependsOn("build")
+        projectDir.resolve("build/libs")?.listFiles()?.forEach {
+            it.renameTo(rootDir.resolve(it.name))
+        }
+    }
+
     val ktlint = register("ktlint", JavaExec::class) {
         group = LifecycleBasePlugin.VERIFICATION_GROUP
         inputs.dir("src")
@@ -72,4 +80,12 @@ publish {
     publishVersion = RELEASE_VERSION
     desc = RELEASE_DESC
     website = RELEASE_WEBSITE
+}
+
+markdown {
+    isPrettyPrint = true
+    write(rootDir.resolve("README.md")) {
+        header("Fuck Me")
+        paragraph(RELEASE_DESC)
+    }
 }

@@ -1,5 +1,7 @@
 package com.hendraanggrian.markdown
 
+import com.hendraanggrian.markdown.internal.MarkdownBuilderImpl
+
 interface ListBuilder : BaseMarkdownBuilder {
 
     fun list(bulletType: BulletType = BulletType.ASTERISK, builder: ListItemBuilder.() -> Unit) =
@@ -29,9 +31,8 @@ interface ListBuilder : BaseMarkdownBuilder {
         fun item(value: String, builder: MarkdownBuilder.() -> Unit) {
             val prefix = prefix
             sb.appendln("$prefix $value")
-            val blankPrefix = prefix.map { " " }.joinToString("") + " "
-            sb.appendln(blankPrefix)
-            val lines = _MarkdownBuilder(isPrettyPrint).apply(builder).sb.lines().toMutableList()
+            sb.appendln()
+            val lines = MarkdownBuilderImpl(isPrettyPrint).apply(builder).sb.lines().toMutableList()
             // merge newlines
             lines.forEachIndexed { index, line ->
                 if (index != lines.lastIndex &&
@@ -41,7 +42,15 @@ interface ListBuilder : BaseMarkdownBuilder {
                     lines.removeAt(index)
                 }
             }
-            lines.forEach { sb.appendln("$blankPrefix$it") }
+            lines.forEach {
+                when {
+                    it.isBlank() -> sb.appendln()
+                    else -> {
+                        val blankPrefix = prefix.map { " " }.joinToString("") + " "
+                        sb.appendln("$blankPrefix$it")
+                    }
+                }
+            }
         }
     }
 

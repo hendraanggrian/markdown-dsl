@@ -2,7 +2,8 @@ group = RELEASE_GROUP
 version = RELEASE_VERSION
 
 plugins {
-    kotlin("jvm")
+    `java-gradle-plugin`
+    `kotlin-dsl`
     dokka()
     id("com.jfrog.bintray")
     id("com.novoda.bintray-release")
@@ -15,6 +16,15 @@ sourceSets {
         resources.srcDir("res")
     }
     get("test").java.srcDir("tests/src")
+}
+
+gradlePlugin {
+    (plugins) {
+        register(RELEASE_ARTIFACT) {
+            id = RELEASE_GROUP
+            implementationClass = "$RELEASE_GROUP.MarkdownPlugin"
+        }
+    }
 }
 
 val configuration = configurations.register("ktlint")
