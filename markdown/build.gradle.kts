@@ -85,7 +85,7 @@ publish {
 markdown {
     isPrettyPrint = true
     write(rootDir.resolve("README.md")) {
-        header("Fuck Me")
+        header("Markdown DSL")
         paragraph(RELEASE_DESC)
     }
 }
