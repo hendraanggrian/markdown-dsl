@@ -7,4 +7,5 @@ interface MarkdownBuilder : ParagraphBuilder,
     ListBuilder,
     CodeBlockBuilder,
     LineBuilder,
-    LinkBuilder
+    LinkBuilder,
+    ImageBuilder

@@ -33,7 +33,7 @@ class ListTest {
                     item("Hello")
                     item("world")
                 }
-            }.trim()
+            }
         )
     }
 
@@ -54,7 +54,7 @@ class ListTest {
                     }
                     item("world")
                 }
-            }.trim()
+            }
         )
         assertEquals(
             """
@@ -71,7 +71,7 @@ class ListTest {
                     }
                     item("world")
                 }
-            }.trim()
+            }
         )
     }
 }

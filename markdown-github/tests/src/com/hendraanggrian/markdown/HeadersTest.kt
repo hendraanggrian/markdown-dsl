@@ -1,32 +1,27 @@
 package com.hendraanggrian.markdown
 
+import com.hendraanggrian.markdown.github.h1
 import org.junit.Test
 import kotlin.test.assertEquals
 
-class LineTest {
+class HeadersTest {
 
     @Test
-    fun line() {
+    fun h1() {
         assertEquals(
             """
-                Hello world
-
-                ---
+                #Hello world
             """.trimIndent(),
             buildMarkdown {
-                paragraph("Hello world")
-                line()
+                h1("Hello world")
             }
         )
         assertEquals(
             """
-                Hello world
-
-                - - -
+                # Hello world
             """.trimIndent(),
             buildMarkdown(true) {
-                paragraph("Hello world")
-                line()
+                h1("Hello world")
             }
         )
     }

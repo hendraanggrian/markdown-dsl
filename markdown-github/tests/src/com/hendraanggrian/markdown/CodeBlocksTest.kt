@@ -1,9 +1,10 @@
 package com.hendraanggrian.markdown
 
+import com.hendraanggrian.markdown.github.codeBlock
 import org.junit.Test
 import kotlin.test.assertEquals
 
-class CodeBlockTest {
+class CodeBlocksTest {
 
     @Test
     fun codeBlock() {
@@ -11,11 +12,17 @@ class CodeBlockTest {
             """
                 This is a normal paragraph:
 
-                    This is a code block.
+                ```java
+                this.isCode() == true
+                ```
             """.trimIndent(),
             buildMarkdown {
                 paragraph("This is a normal paragraph:")
-                codeBlock("This is a code block.")
+                codeBlock(
+                    "java", """
+                        this.isCode() == true
+                        """.trimIndent()
+                )
             }
         )
     }

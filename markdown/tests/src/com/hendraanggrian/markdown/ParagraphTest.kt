@@ -13,7 +13,7 @@ class ParagraphTest {
             """.trimIndent(),
             buildMarkdown {
                 paragraph("Hello world")
-            }.trim()
+            }
         )
     }
 }

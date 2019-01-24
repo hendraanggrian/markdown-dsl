@@ -14,7 +14,7 @@ class HeaderTest {
             """.trimIndent(),
             buildMarkdown {
                 header("Hello world")
-            }.trim()
+            }
         )
         assertEquals(
             """
@@ -23,7 +23,7 @@ class HeaderTest {
             """.trimIndent(),
             buildMarkdown(true) {
                 header("Hello world")
-            }.trim()
+            }
         )
     }
 
@@ -36,7 +36,7 @@ class HeaderTest {
             """.trimIndent(),
             buildMarkdown {
                 subheader("Hello world")
-            }.trim()
+            }
         )
         assertEquals(
             """
@@ -45,7 +45,7 @@ class HeaderTest {
             """.trimIndent(),
             buildMarkdown(true) {
                 subheader("Hello world")
-            }.trim()
+            }
         )
     }
 }

@@ -13,7 +13,7 @@ class BlockquoteTest {
             """.trimIndent(),
             buildMarkdown {
                 blockquote("Hello world")
-            }.trim()
+            }
         )
         assertEquals(
             """
@@ -21,7 +21,7 @@ class BlockquoteTest {
             """.trimIndent(),
             buildMarkdown(true) {
                 blockquote("Hello world")
-            }.trim()
+            }
         )
     }
 
@@ -38,7 +38,7 @@ class BlockquoteTest {
                     header("Hello")
                     paragraph("world")
                 }
-            }.trim()
+            }
         )
         assertEquals(
             """
@@ -51,7 +51,7 @@ class BlockquoteTest {
                     header("Hello")
                     paragraph("world")
                 }
-            }.trim()
+            }
         )
     }
 
@@ -71,7 +71,7 @@ class BlockquoteTest {
                     }
                     paragraph("I'm fine")
                 }
-            }.trim()
+            }
         )
         assertEquals(
             """
@@ -87,7 +87,7 @@ class BlockquoteTest {
                     }
                     paragraph("I'm fine")
                 }
-            }.trim()
+            }
         )
     }
 }
